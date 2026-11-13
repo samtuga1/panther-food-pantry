@@ -26,7 +26,7 @@ The Supabase project has one demo account per role: `demo.student@pvamu.edu`, `d
 
 ## Supabase connection
 
-Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in `frontend/.env` (Git ignores it; `.env.example` lists the variables). Set the same variables in the deployment build environment and restart Vite after changing them. Only a publishable key belongs in the browser; the configuration rejects secret keys.
+Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in `.env` for development (Git ignores it; `.env.example` lists the variables) and restart Vite after changing them. Production builds, including the Cloudflare Pages build, read the same variables from the committed `.env.production`; variables set in the build environment override it. Vite inlines these values when it builds, so a change needs a rebuild and redeploy. Only a publishable key belongs in the browser; the configuration rejects secret keys.
 
 ```sh
 npm run supabase:check                # Auth endpoint reachable, key accepted
